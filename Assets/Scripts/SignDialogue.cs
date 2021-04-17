@@ -35,6 +35,7 @@ public class SignDialogue : MonoBehaviour
         if(collider.CompareTag("Player"))
         {
             playerInRange = true;
+            
         }
     }
 

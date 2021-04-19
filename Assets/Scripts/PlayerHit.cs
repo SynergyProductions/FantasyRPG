@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Remove script later
 public class PlayerHit : MonoBehaviour
 {
 

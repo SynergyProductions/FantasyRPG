@@ -6,28 +6,39 @@ public class Knockback : MonoBehaviour
 {
     public float thrust;
     public float knockTime;
+    public float damage;
     
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.CompareTag("enemy"))
+        if(collider.gameObject.CompareTag("breakable") && this.gameObject.CompareTag("Player"))
         {
-            Rigidbody2D enemy = collider.GetComponent<Rigidbody2D>();
-            if(enemy != null)
+            collider.GetComponent<Pot>().Smash();
+        }
+        if(collider.gameObject.CompareTag("enemy") || collider.gameObject.CompareTag("Player"))
+        {
+            Rigidbody2D hit = collider.GetComponent<Rigidbody2D>();
+            if(hit != null)
             {
-                Vector2 difference =enemy.transform.position - transform.position;
+                Vector2 difference =hit.transform.position - transform.position;
                 difference = difference.normalized * thrust;
-                enemy.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine(KnockCo(enemy));
+                hit.AddForce(difference, ForceMode2D.Impulse);
+                if(collider.gameObject.CompareTag("enemy") && collider.isTrigger)
+                {
+                    hit.GetComponent<EnemyAI>().currentState = EnemyState.stagger;
+                    collider.GetComponent<EnemyAI>().Knock(hit, knockTime, damage);
+                
+                }
+                if(collider.gameObject.CompareTag("Player"))
+                {
+                    if(collider.GetComponent<PlayerController>().currentState != PlayerState.stagger)
+                    {
+                        hit.GetComponent<PlayerController>().currentState = PlayerState.stagger;
+                        collider.GetComponent<PlayerController>().Knock(knockTime, damage);
+                    }
+                }
+
             }
         }
     }
 
-    private IEnumerator KnockCo(Rigidbody2D enemy)
-    {
-        if(enemy != null)
-        {
-            yield return new WaitForSeconds(knockTime);
-            enemy.velocity = Vector2.zero;
-        }
-    }
 }

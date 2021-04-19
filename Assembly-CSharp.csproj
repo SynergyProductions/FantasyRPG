@@ -36,15 +36,19 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-     <Compile Include="Assets\Scripts\RoomTransfer.cs" />
      <Compile Include="Assets\Scripts\SignDialogue.cs" />
-     <Compile Include="Assets\Scripts\Pot.cs" />
-     <Compile Include="Assets\Scripts\PlayerHit.cs" />
-     <Compile Include="Assets\Scripts\EnemyAI.cs" />
-     <Compile Include="Assets\Scripts\Log.cs" />
+     <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\ScriptableObjects\FloatValue.cs" />
      <Compile Include="Assets\Scripts\Knockback.cs" />
+     <Compile Include="Assets\Scripts\ScriptableObjects\Signals.cs" />
+     <Compile Include="Assets\Scripts\EnemyAI.cs" />
+     <Compile Include="Assets\Scripts\SignalListener.cs" />
+     <Compile Include="Assets\Scripts\Log.cs" />
+     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+     <Compile Include="Assets\Scripts\PlayerHit.cs" />
+     <Compile Include="Assets\Scripts\Pot.cs" />
+     <Compile Include="Assets\Scripts\HeartManager.cs" />
+     <Compile Include="Assets\Scripts\RoomTransfer.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
